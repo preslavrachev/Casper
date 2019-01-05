@@ -47,17 +47,6 @@ into the {body} of the default.hbs template --}}
             </section>
             {{/if}}
 
-            <section class="post-full-comments">
-                <hr>
-                <h2 align="center">Have a Comment?</h2>
-                <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
-                <a class="author-card-button" 
-                href="https://twitter.com/intent/tweet?text={{encode '@preslavrachev [ADD YOUR COMMENT HERE]'}}&url={{url absolute="true"}}&related=preslavrachev" 
-                style="font-size: 1.6rem; width:360px;margin-left:auto; margin-right:auto">✏️ Share your opinion with me on Twitter</a>
-                <h3 align="center">I'd love to hear it!</h3>
-                <hr>
-            </section>
-
             <footer class="post-full-footer">
 
                 {{!-- There are two options for how we display the byline/author-info.
@@ -72,6 +61,22 @@ into the {body} of the default.hbs template --}}
                 {{/has}}
 
             </footer>
+
+            <section class="post-full-comments">	
+                <section id="disqus_thread"></section>	
+                <script>	
+                    var disqus_config = function () {	
+                        this.page.url = "{{url absolute="true"}}";	
+                        this.page.identifier = "ghost-{{comment_id}}"	
+                    };	
+                    (function () {	
+                        var d = document, s = d.createElement('script');	
+                        s.src = 'https://preslav.disqus.com/embed.js';	
+                        s.setAttribute('data-timestamp', +new Date());	
+                        (d.head || d.body).appendChild(s);	
+                    })();	
+                </script>	
+            </section>
         </article>
 
     </div>
